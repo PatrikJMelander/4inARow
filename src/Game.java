@@ -219,7 +219,8 @@ public class Game extends JFrame implements ActionListener {
             if (sortedUsers.get(i).getGameStats().getWins() == 0) {
                 break;
             }
-            highScore.append(String.format("%d: %s %s%n", i + 1, sortedUsers.get(i).getUserName(), sortedUsers.get(i).getGameStats().toString()));
+            highScore.append(String.format("%d: %s %s%n", i + 1, sortedUsers.get(i).getUserName(),
+                    sortedUsers.get(i).getGameStats().toString()));
         }
         return highScore.toString();
     }
