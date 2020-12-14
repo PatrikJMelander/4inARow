@@ -22,7 +22,7 @@ public class Game extends JFrame implements ActionListener {
         add(BorderLayout.CENTER, loginMenuPanel);
         setTitle("Logga in spelare 1");
         setSize(new Dimension(1000, 800));
-        setResizable(false);
+        setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
