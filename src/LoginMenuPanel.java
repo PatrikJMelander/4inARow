@@ -9,8 +9,8 @@ public class LoginMenuPanel extends JPanel implements ActionListener {
     public static final Color BACKGROUND_COLOR = new Color(0x0123AA);
     private final JTextField userNameField = new JTextField("");
     private final JPasswordField passwordField = new JPasswordField();
-    private final JButton newUserButton = new JButton("Create new user");
-    private final JButton confirmLoginButton = new JButton("Log in");
+    private final JButton newUserButton = new JButton("Skapa Användare");
+    private final JButton confirmLoginButton = new JButton("Logga in");
     private final JButton highScoreButton = new JButton("Highscore");
 
     private final JLabel outputLabel = new JLabel("Välkommen till Best Company Ever AB's 4-i-rad spel!");
@@ -65,14 +65,17 @@ public class LoginMenuPanel extends JPanel implements ActionListener {
 
         newUserButton.setPreferredSize(new Dimension(250, 50));
         confirmLoginButton.setPreferredSize(new Dimension(250, 50));
+        highScoreButton.setPreferredSize(new Dimension(250, 50));
 
         bottomPanel.add(newUserButton);
         bottomPanel.add(confirmLoginButton);
+        bottomPanel.add(highScoreButton);
 
         add(bottomPanel, BorderLayout.SOUTH);
 
         newUserButton.addActionListener(this);
         confirmLoginButton.addActionListener(this);
+        highScoreButton.addActionListener(this);
         setBackground(BACKGROUND_COLOR);
     }
 
@@ -83,7 +86,7 @@ public class LoginMenuPanel extends JPanel implements ActionListener {
 
         try {
             UserDatabase.addUser(user);
-            outputLabel.setText(user + " added");
+            outputLabel.setText(user + " skapad");
         } catch (IllegalArgumentException e) {
             outputLabel.setText(e.getMessage());
         }
@@ -97,7 +100,7 @@ public class LoginMenuPanel extends JPanel implements ActionListener {
     }
 
     void loginSuccessful(User user) {
-        outputLabel.setText(user + " logged in");
+        outputLabel.setText(user + " inloggad");
         game.addUser(user);
     }
 
@@ -112,7 +115,13 @@ public class LoginMenuPanel extends JPanel implements ActionListener {
         } else if (e.getSource() == confirmLoginButton) {
             attemptLogin();
         } else if (e.getSource() == highScoreButton){
-            JOptionPane.showMessageDialog(this, game.getHighScoreString());
+            Object [] option = {"Logga in", "Avsluta"};
+            int n = JOptionPane.showOptionDialog(null, game.getHighScoreString(), "Highscore",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Game.winnerIcon, option,option[0]);
+            if (n==1) {
+                System.exit(0);
+            }
+
         }
     }
 }

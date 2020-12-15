@@ -14,7 +14,7 @@ public class Game extends JFrame implements ActionListener {
 
     private final LoginMenuPanel loginMenuPanel;
     private final GameBoardPanel gameBoardPanel = new GameBoardPanel(this);
-    private final ImageIcon winnerIcon =  new ImageIcon("43991-93-ibate-1.png");
+    public final static ImageIcon winnerIcon =  new ImageIcon("43991-93-ibate-1.png");
 
     public Game(LoginMenuPanel loginMenuPanel) {
         this.loginMenuPanel = loginMenuPanel;
