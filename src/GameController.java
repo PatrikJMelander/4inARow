@@ -1,3 +1,6 @@
+import model.Tile;
+import model.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,18 +8,18 @@ import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.List;
 
-public class Game extends JFrame implements ActionListener {
+public class GameController extends JFrame implements ActionListener {
     private User redPlayer;
     private User yellowPlayer;
     private int tileCounter = 0;
     private final int[][] tileGrid = new int[6][7];
     private boolean isRedTurn = true;
 
-    private final LoginMenuPanel loginMenuPanel;
-    private final GameBoardPanel gameBoardPanel = new GameBoardPanel(this);
+    private final LoginMenuView loginMenuPanel;
+    private final GameBoardView gameBoardPanel = new GameBoardView(this);
     public final static ImageIcon winnerIcon =  new ImageIcon("43991-93-ibate-1.png");
 
-    public Game(LoginMenuPanel loginMenuPanel) {
+    public GameController(LoginMenuView loginMenuPanel) {
         this.loginMenuPanel = loginMenuPanel;
         setLayout(new BorderLayout());
         add(BorderLayout.CENTER, loginMenuPanel);
@@ -33,7 +36,7 @@ public class Game extends JFrame implements ActionListener {
         for (int row = 0; row < 6; row++) {
             if (tileGrid[row][column] == Tile.EMPTY.getI()) {
                 tileGrid[row][column] = isRedTurn ? Tile.RED.getI() : Tile.YELLOW.getI();
-                gameBoardPanel.getButtons()[row][column].setIcon(isRedTurn ? GameBoardPanel.RED_TILE : GameBoardPanel.YELLOW_TILE);
+                gameBoardPanel.getButtons()[row][column].setIcon(isRedTurn ? GameBoardView.RED_TILE : GameBoardView.YELLOW_TILE);
 
                 tileCounter++;
                 if (hasWon(row, column)) {
@@ -173,7 +176,7 @@ public class Game extends JFrame implements ActionListener {
             Window win = SwingUtilities.getWindowAncestor(gameBoardPanel);
             win.dispose();
             UserDatabase.load();
-            new LoginMenuPanel();
+            new LoginMenuView();
         }
         else System.exit(0);
     }

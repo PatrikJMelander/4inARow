@@ -1,3 +1,7 @@
+package model;
+
+import model.Score;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
