@@ -14,7 +14,7 @@ public class LoginMenuView extends JPanel implements ActionListener {
     private final JButton newUserButton = new JButton("Skapa ny användare");
     private final JButton confirmLoginButton = new JButton("Logga in");
     private final JButton removeUserButton = new JButton("Ta bort användare");
-    private final JButton highscoreButton = new JButton("Logga in");
+    private final JButton highScoreButton = new JButton("Logga in");
 
 
     private final JLabel outputLabel = new JLabel("<html>Välkommen till Best Company Ever AB's " +
@@ -77,19 +77,19 @@ public class LoginMenuView extends JPanel implements ActionListener {
         newUserButton.setPreferredSize(new Dimension(250, 50));
         confirmLoginButton.setPreferredSize(new Dimension(250, 50));
         removeUserButton.setPreferredSize(new Dimension(250, 50));
-        highscoreButton.setPreferredSize(new Dimension(250, 50));
+        highScoreButton.setPreferredSize(new Dimension(250, 50));
 
         bottomPanel.add(newUserButton);
         bottomPanel.add(confirmLoginButton);
         bottomPanel.add(removeUserButton);
-        bottomPanel.add(highscoreButton);
+        bottomPanel.add(highScoreButton);
 
         add(bottomPanel, BorderLayout.SOUTH);
 
         newUserButton.addActionListener(this);
         confirmLoginButton.addActionListener(this);
         removeUserButton.addActionListener(this);
-        highscoreButton.addActionListener(this);
+        highScoreButton.addActionListener(this);
 
         setBackground(BACKGROUND_COLOR);
     }
@@ -139,7 +139,7 @@ public class LoginMenuView extends JPanel implements ActionListener {
             }
             else
                 JOptionPane.showMessageDialog(null, "Felaktigt lösenord");
-        }else if (e.getSource()==highscoreButton){
+        }else if (e.getSource()== highScoreButton){
             Object [] option = {"Logga in", "Avsluta"};
             int n = JOptionPane.showOptionDialog(this, gameController.getHighScoreString(), "Highscore",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, GameController.winnerIcon, option,option[0]);
