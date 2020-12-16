@@ -55,7 +55,7 @@ public class UserDatabase {
     }
 
 
-    public static Optional<User> getUser(String userName, String password) {
+    public static Optional<User> getUser(String userName, char[] password) {
         return userList.stream()
                 .filter(user -> user.getUserName().equals(userName))
                 .filter (user -> user.getPassword().equals(password))

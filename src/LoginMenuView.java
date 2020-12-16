@@ -97,7 +97,7 @@ public class LoginMenuView extends JPanel implements ActionListener {
     void createUser() {
         User user = new User()
                 .setUserName(userNameField.getText().trim())
-                .setPassword(passwordField.getText().trim());
+                .setPassword(passwordField.getPassword());
 
         try {
             UserDatabase.addUser(user);
@@ -109,7 +109,7 @@ public class LoginMenuView extends JPanel implements ActionListener {
 
     void attemptLogin() {
         Optional<User> userOptional;
-        userOptional = UserDatabase.getUser(userNameField.getText(), passwordField.getText());
+        userOptional = UserDatabase.getUser(userNameField.getText(), passwordField.getPassword());
         userOptional.ifPresentOrElse(this::loginSuccessful, this::loginFail);
     }
 
